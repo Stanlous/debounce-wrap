@@ -1,9 +1,17 @@
 
-function debounceWrap (fn, { wait = 200, first = false }) {
-  let tm, called
+function debounceWrap (fn, options) {
+  if (typeof fn !== 'function') {
+    return console.error(new Error(`debounce-wrap: Expected the first argument to be a function, got \'${typeof fn}\'`))
+  }
+
+  !options && (options = {})
+  var wait = options.wait || 100
+  var first = options.first || false
+
+  var tm, called
   function debounce() {
-    const args = arguments
-    const context = this
+    var args = arguments
+    var context = this
     if (first && !called) {
       called = true
       fn.apply(context, args)
