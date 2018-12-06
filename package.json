@@ -4,7 +4,7 @@
   "description": "debounce wrap",
   "main": "src/index.js",
   "scripts": {
-    "test": "node_modules/karma/bin/karma start karma.config.js"
+    "test": "sh test/test.sh"
   },
   "repository": {
     "type": "git",
