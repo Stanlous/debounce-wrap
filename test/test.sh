@@ -1,10 +1,10 @@
 #!/bin/sh
 
 echo ------------ Test With Node ------------
-node node_modules/jasmine/bin/jasmine test/debounce.spec.js 
+npm run test:node
 echo 
 echo
 echo
 echo
 echo ------------ Test With Browser ------------
-node_modules/karma/bin/karma start karma.config.js
+npm run test:browser:phantomjs

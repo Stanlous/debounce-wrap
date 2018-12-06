@@ -1,8 +1,8 @@
-const debounceWrap = require('..')
+var debounceWrap = require('..')
 
 describe('Call times:', function () {
-  let fn
-  beforeEach(() => {
+  var fn
+  beforeEach(function () {
     jasmine.clock().install();
     fn = jasmine.createSpy('fn')
   })
@@ -12,7 +12,7 @@ describe('Call times:', function () {
   })
 
   it('one call', function () {
-    const debounce = debounceWrap(fn)
+    var debounce = debounceWrap(fn)
     debounce()
 
     jasmine.clock().tick(100) 
@@ -23,7 +23,7 @@ describe('Call times:', function () {
   })
 
   it('multiple call', function () {
-    const debounce = debounceWrap(fn)
+    var debounce = debounceWrap(fn)
     debounce()
     debounce()
     expect(fn).toHaveBeenCalledTimes(0)
@@ -41,8 +41,8 @@ describe('Call times:', function () {
 })
 
 describe('Call at first:', function () {
-  let fn
-  beforeEach(() => {
+  var fn
+  beforeEach(function () {
     jasmine.clock().install();
     fn = jasmine.createSpy('fn')
   })
@@ -52,7 +52,7 @@ describe('Call at first:', function () {
   })
 
   it('first', function () {
-    const debounce = debounceWrap(fn, { wait: 100, first: true })
+    var debounce = debounceWrap(fn, { wait: 100, first: true })
     debounce()
     expect(fn).toHaveBeenCalledTimes(1)
     debounce()
@@ -65,8 +65,8 @@ describe('Call at first:', function () {
 })
 
 describe('Bind this and proxy arguments:', function () {
-  let fn
-  beforeEach(() => {
+  var fn
+  beforeEach(function () {
     jasmine.clock().install();
     fn = jasmine.createSpy('fn')
   })
@@ -76,17 +76,17 @@ describe('Bind this and proxy arguments:', function () {
   })
 
   it('this', function () {
-    const fakeContext = {}
-    const debounce = debounceWrap(function () { 
+    var fakeContext = {}
+    var debounce = debounceWrap(function () { 
       return this 
     }, { first: true })
-    const result = debounce.call(fakeContext) === fakeContext
+    var result = debounce.call(fakeContext) === fakeContext
     expect(result).toBe(true)
   })
 
   it('arguments', function () {
-    const debounce = debounceWrap(fn, { wait:20 })
-    const a = {}
+    var debounce = debounceWrap(fn, { wait:20 })
+    var a = {}
     debounce(1)
     jasmine.clock().tick(100) 
     expect(fn).toHaveBeenCalledWith(1)
@@ -101,8 +101,8 @@ describe('Bind this and proxy arguments:', function () {
 })
 
 describe('cancel():', function () {
-  let fn
-  beforeEach(() => {
+  var fn
+  beforeEach(function () {
     jasmine.clock().install();
     fn = jasmine.createSpy('fn')
   })
@@ -112,7 +112,7 @@ describe('cancel():', function () {
   })
 
   it('cancel', function () {
-    const debounce = debounceWrap(fn, { wait: 20 })
+    var debounce = debounceWrap(fn, { wait: 20 })
     debounce(1)
     debounce(1)
 

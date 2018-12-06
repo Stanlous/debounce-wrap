@@ -1,7 +1,7 @@
 
 function debounceWrap (fn, options) {
   if (typeof fn !== 'function') {
-    return console.error(new Error(`debounce-wrap: Expected the first argument to be a function, got \'${typeof fn}\'`))
+    return console.error(new Error('debounce-wrap: Expected the first argument to be a function, got '+ typeof fn))
   }
 
   !options && (options = {})

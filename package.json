@@ -4,7 +4,10 @@
   "description": "debounce wrap",
   "main": "src/index.js",
   "scripts": {
-    "test": "sh test/test.sh"
+    "test": "sh test/test.sh",
+    "test:browser": "node_modules/karma/bin/karma start karma.config.js",
+    "test:browser:phantomjs": "node_modules/karma/bin/karma start karma.config.js --single-run --browsers PhantomJS",
+    "test:node": "node node_modules/jasmine/bin/jasmine test/debounce.spec.js "
   },
   "repository": {
     "type": "git",
@@ -27,6 +30,7 @@
     "karma-browserify": "^6.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^2.0.1",
+    "karma-phantomjs-launcher": "^1.0.4",
     "watchify": "^3.11.0"
   }
 }
