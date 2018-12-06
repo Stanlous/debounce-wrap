@@ -49,7 +49,7 @@ window.onresize = debounce
 **cancel debounce:**
 ```js
 const debounceWrap = require('debounce-wrap')
-const debounce = debounceWrap(input, { wait: 100, first: true })
+const debounce = debounceWrap(input, { wait: 100 })
 
 function input(a) {
   console.log(a)
