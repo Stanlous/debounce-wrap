@@ -5,7 +5,7 @@ function debounceWrap (fn, options) {
   }
 
   !options && (options = {})
-  var wait = options.wait || 100
+  var wait = options.wait || 150
   var first = options.first || false
 
   var tm, called
@@ -14,8 +14,7 @@ function debounceWrap (fn, options) {
     var context = this
     if (first && !called) {
       called = true
-      fn.apply(context, args)
-      return
+      return fn.apply(context, args)
     }
     if (tm) {
       clearTimeout(tm)
